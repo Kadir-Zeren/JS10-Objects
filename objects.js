@@ -65,3 +65,85 @@ console.log(kisi["notlar"]["tur101"]) //? AA
 // // console.log(kisi.kimlikNo)
 // // console.log(kisi.dogum)
 // console.log(kisi.secici) //! . notasyonunda key bir degisken olamaz.
+
+//*  ---------- YAZMA  ----------------
+console.log(kisi)
+kisi.dogumTarihi = 2000
+kisi.diller = "Türkçe-İnglizce"
+kisi.kilo = 80
+
+kisi["ehliyet"] = false
+
+//* ============================================
+//*               NESTED OBJECTS
+//* ============================================
+
+//! objeler itere edilebilr yapılar değildir.
+const kisiler = {
+  ahmet: {
+    soyİsim: "Yılmaz",
+    kimlikNo: "123123341112",
+    maas: 70000,
+  },
+  mehmet: {
+    soyİsim: "Ozturk",
+    kimlikNo: "1696571112",
+    maas: 50000,
+  },
+}
+
+console.log(kisiler.ahmet.kimlikNo)
+console.log(kisiler["mehmet"]["maas"])
+
+const isim = "ahmet"
+console.log(kisiler[isim])
+
+//********************************************************
+//* JSON => Javascript Object Notation
+//********************************************************
+
+const people = [
+  {
+    isim: "Ahmet",
+    soyİsim: "Yılmaz",
+    kimlikNo: "123123341112",
+    maas: 70000,
+    job: "developer",
+  },
+  {
+    isim: "Mehmet",
+    soyİsim: "Ozturk",
+    kimlikNo: "1696571112",
+    maas: 50000,
+    job: "developer",
+  },
+  {
+    isim: "Canan",
+    soyİsim: "Can",
+    kimlikNo: "33344571112",
+    maas: 90000,
+    job: "tester",
+  },
+]
+
+// const key = prompt(
+//   "Kisilerini hangi bilgisini ogrenmek istersiniz: isim, soyİsim,kimlikNo, maas?"
+// )
+// people.forEach((p) => console.log(p.isim))
+// people.forEach((p) => console.log(p.maas))
+// people.forEach((p) => console.log(p["kimlikNo"]))
+// people.forEach((p) => console.log(p[key]))
+
+//? Maasların toplami
+const toplamMaas = people.reduce((t, p) => t + p.maas, 0)
+console.log(toplamMaas)
+
+//? job, developer olanların isim+soyisim yazdirinz
+
+const devs = people.filter((p) => p.job === "developer")
+console.log(devs)
+
+const devNames = people
+  .filter((p) => p.job === "developer")
+  .map((p) => `${p.isim} ${p.soyİsim}`)
+console.log(devNames)
